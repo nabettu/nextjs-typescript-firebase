@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Router from 'next/router';
-import Link from 'next/link';
-import * as styles from '../../../styles/main.scss';
-import { connect } from 'react-redux';
-import { signOutUser } from '../../redux/actions';
+import React, { Component } from "react";
+import Router from "next/router";
+import Link from "next/link";
+import * as styles from "../../../styles/main.scss";
+import { connect } from "react-redux";
+import { signOutUser } from "../../redux/actions";
 
 class NavBar extends Component<
   { signOutUser: () => void },
@@ -18,9 +18,9 @@ class NavBar extends Component<
       <nav
         className={[
           styles.navbar,
-          styles['navbar-dark'],
-          styles['bg-dark']
-        ].join(' ')}
+          styles["navbar-dark"],
+          styles["bg-dark"],
+        ].join(" ")}
       >
         <span className="navbar-brand">
           <Link href="/dashboard">
@@ -28,18 +28,18 @@ class NavBar extends Component<
           </Link>
         </span>
 
-        <div className={styles['navbar-nav']}>
-          <div className={[styles['nav-item'], styles['dropdown']].join(' ')}>
+        <div className={styles["navbar-nav"]}>
+          <div className={[styles["nav-item"], styles["dropdown"]].join(" ")}>
             <span
-              className={[styles['nav-link'], styles['dropdown-toggle']].join(
-                ' '
+              className={[styles["nav-link"], styles["dropdown-toggle"]].join(
+                " ",
               )}
               id="navbarDropdownMenuLink"
               role="button"
               tabIndex={0}
               onClick={() =>
                 this.setState({
-                  dropdownOpen: !this.state.dropdownOpen
+                  dropdownOpen: !this.state.dropdownOpen,
                   // dropdownOpen: true
                 })
               }
@@ -48,39 +48,39 @@ class NavBar extends Component<
             </span>
             <div
               className={[
-                styles['dropdown-menu'],
-                styles['dropdown-menu-right'],
-                styles['dropdown-default']
-              ].join(' ')}
+                styles["dropdown-menu"],
+                styles["dropdown-menu-right"],
+                styles["dropdown-default"],
+              ].join(" ")}
               style={
                 this.state && this.state.dropdownOpen
-                  ? { display: 'block', position: 'absolute' }
+                  ? { display: "block", position: "absolute" }
                   : {}
               }
             >
               <span
-                className={styles['dropdown-item']}
-                onClick={() => Router.push('/profile/picture-update')}
+                className={styles["dropdown-item"]}
+                onClick={() => Router.push("/profile/picture-update")}
                 tabIndex={0}
               >
                 Change Profile Picture
               </span>
               <span
-                className={styles['dropdown-item']}
-                onClick={() => Router.push('/profile/details-update')}
+                className={styles["dropdown-item"]}
+                onClick={() => Router.push("/profile/details-update")}
                 tabIndex={0}
               >
                 Update Profile Details
               </span>
               <span
-                className={styles['dropdown-item']}
-                onClick={() => Router.push('/reset-password')}
+                className={styles["dropdown-item"]}
+                onClick={() => Router.push("/reset-password")}
                 tabIndex={0}
               >
                 Change Password
               </span>
               <span
-                className={styles['dropdown-item']}
+                className={styles["dropdown-item"]}
                 onClick={() => this.props.signOutUser()}
                 tabIndex={0}
               >
@@ -98,7 +98,4 @@ const mapStateToProps = ({ user, auth }) => {
   return { user, auth };
 };
 
-export default connect(
-  mapStateToProps,
-  { signOutUser }
-)(NavBar);
+export default connect(mapStateToProps, { signOutUser })(NavBar);

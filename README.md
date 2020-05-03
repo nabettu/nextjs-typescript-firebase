@@ -122,12 +122,9 @@ npm run dev;
 - Use the following code under your project to update/create a table
 
 ```tsx
-import firebase from 'src/firebase';
-const ref = firebase
-  .database()
-  .ref()
-  .child('table-name');
-ref.child('unique-name-for--the-entry').set(/* table fields*/);
+import firebase from "src/firebase";
+const ref = firebase.database().ref().child("table-name");
+ref.child("unique-name-for--the-entry").set(/* table fields*/);
 ```
 
 - To get the data from firebase table use
@@ -136,9 +133,9 @@ ref.child('unique-name-for--the-entry').set(/* table fields*/);
 var Id = id; //unique-name-for--the-entry
 firebase
   .database()
-  .ref('/table-name/' + userId)
-  .once('value')
-  .then(function(snapshot) {
+  .ref("/table-name/" + userId)
+  .once("value")
+  .then(function (snapshot) {
     const data = snapshot.val();
     //perform operation on data here
   });
@@ -149,39 +146,3 @@ firebase
 if you wish to fetch data in getInitialProps of a page , make sure you have enabled CORS on your
 server , alternatively you can use this chrome extension
 [Allow-Control-Allow-Origin: \*](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
-
-# Screens
-
-### SignIn Page
-
-![SignIn Page](/screens/Signin.png)
-
-> Note: This page contains signin form and prefetched data from `https://cat-fact.herokuapp.com/facts`
-
-### SignUp Page
-
-![SignUp Page](/screens/Signup.png)
-
-### ForgotPassword Page
-
-![ForgotPassword](/screens/ForgotPassword.png)
-
-### Dashboard Page
-
-![Dashboard Page](/screens/Dashboard.png)
-
-### With Dropdown Menu
-
-![Dashboard Page with Dropdown Menu](/screens/DashboardWithDropdown.png)
-
-### Profile Details Update Page
-
-![Profile Details Update](/screens/ProfileDetailsUpdate.png)
-
-### Profile Picture Update Page
-
-![Profile Picture Update](/screens/ProfilePictureUpdate.png)
-
-### Reset Passsword Page
-
-![Reset Passsword](/screens/ResetPassword.png)

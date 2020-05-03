@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import * as styles from '../styles/main.scss';
+import * as styles from "../styles/main.scss";
 
-import ResetPassword from '../src/components/Auth/ResetPassword';
-import CheckAuth from '../src/components/Auth/CheckAuth';
-import NavBar from '../src/components/Navigation/NavBar';
+import ResetPassword from "../src/components/Auth/ResetPassword";
+import CheckAuth from "../src/components/Auth/CheckAuth";
+import NavBar from "../src/components/Navigation/NavBar";
 
 export default class extends React.Component {
   render() {
@@ -13,8 +13,8 @@ export default class extends React.Component {
         <CheckAuth>
           <NavBar />
           <div
-            className={[styles.container, styles['centered-container']].join(
-              ' '
+            className={[styles.container, styles["centered-container"]].join(
+              " ",
             )}
           >
             <ResetPassword />

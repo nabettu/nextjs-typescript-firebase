@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import * as styles from '../../../styles/main.scss';
-import { updateUser } from '../../redux/actions';
-import { IUser } from '../../interfaces';
+import * as React from "react";
+import { connect } from "react-redux";
+import * as styles from "../../../styles/main.scss";
+import { updateUser } from "../../redux/actions";
+import { IUser } from "../../interfaces";
 
 class ProfileDetailsUpdate extends React.Component<
   {
     user;
     updateUser: (
       uid: number,
-      user: { email: string; dob: string; gender: string; name: string }
+      user: { email: string; dob: string; gender: string; name: string },
     ) => void;
   },
   IUser
 > {
   state: IUser = {
-    name: '',
+    name: "",
     email: undefined,
-    gender: 'male',
-    dob: ''
+    gender: "male",
+    dob: "",
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -28,7 +28,7 @@ class ProfileDetailsUpdate extends React.Component<
     return null;
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     this.props.updateUser(this.props.user.uid, this.state);
@@ -38,36 +38,38 @@ class ProfileDetailsUpdate extends React.Component<
       <div className={styles.container}>
         <div className={styles.panel}>
           <form onSubmit={this.handleSubmit}>
-            <div className={styles['form-group']}>
+            <div className={styles["form-group"]}>
               <label htmlFor="nameInput"> Name</label>
               <input
                 id="nameInput"
-                className={styles['form-control']}
+                className={styles["form-control"]}
                 type="text"
                 value={this.state.name}
                 name="name"
-                onChange={event => this.setState({ name: event.target.value })}
+                onChange={(event) =>
+                  this.setState({ name: event.target.value })
+                }
               />
             </div>
-            <div className={styles['form-group']}>
+            <div className={styles["form-group"]}>
               <label htmlFor="dobInput"> Date of Birth</label>
               <input
                 id="dobInput"
-                className={styles['form-control']}
+                className={styles["form-control"]}
                 type="date"
                 value={this.state.dob}
                 name="dob"
-                onChange={event => this.setState({ dob: event.target.value })}
+                onChange={(event) => this.setState({ dob: event.target.value })}
               />
             </div>
-            <div className={styles['form-group']}>
+            <div className={styles["form-group"]}>
               <label htmlFor="genderInput"> Gender</label>
               <select
                 id="genderInput"
-                className={styles['form-control']}
+                className={styles["form-control"]}
                 value={this.state.gender}
                 name="gender"
-                onChange={event =>
+                onChange={(event) =>
                   this.setState({ gender: event.target.value })
                 }
               >
@@ -76,15 +78,15 @@ class ProfileDetailsUpdate extends React.Component<
                 <option> decline to self identity </option>
               </select>
             </div>
-            <div className={styles['form-group']}>
+            <div className={styles["form-group"]}>
               <label htmlFor="emailInput"> Email</label>
               <input
                 id="emailInput"
-                className={styles['form-control']}
+                className={styles["form-control"]}
                 type="email"
                 defaultValue={this.state.email}
                 name="email"
-                onChange={event =>
+                onChange={(event) =>
                   event.target.value &&
                   this.setState({ email: event.target.value })
                 }
@@ -92,14 +94,14 @@ class ProfileDetailsUpdate extends React.Component<
             </div>
             <button
               className={[
-                styles['btn-primary'],
+                styles["btn-primary"],
                 styles.btn,
-                styles['submit-button']
-              ].join(' ')}
+                styles["submit-button"],
+              ].join(" ")}
               type="submit"
             >
-              {' '}
-              Submit{' '}
+              {" "}
+              Submit{" "}
             </button>
           </form>
         </div>
@@ -112,7 +114,4 @@ const mapStateToProps = ({ user }) => {
   return { user };
 };
 
-export default connect(
-  mapStateToProps,
-  { updateUser }
-)(ProfileDetailsUpdate);
+export default connect(mapStateToProps, { updateUser })(ProfileDetailsUpdate);

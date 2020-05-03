@@ -1,4 +1,4 @@
-import firebase from '.';
+import firebase from ".";
 
 const auth = firebase.auth();
 
@@ -6,17 +6,17 @@ export const fbSignUpUser = (email, password) =>
   auth.createUserWithEmailAndPassword(email, password);
 
 export const fbSignInUser = (email, password) =>
-  auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
+  auth.signInWithEmailAndPassword(email, password);
 
 export const fbSignOut = () => auth.signOut();
 
-export const fbCheckAuth = callback => auth.onAuthStateChanged(callback);
+export const fbCheckAuth = (callback) => auth.onAuthStateChanged(callback);
 
-export const fbReauthenticateUser = currentPassword => {
+export const fbReauthenticateUser = (currentPassword) => {
   const user = firebase.auth().currentUser;
   const cred = firebase.auth.EmailAuthProvider.credential(
     user.email,
-    currentPassword
+    currentPassword,
   );
   return user.reauthenticateWithCredential(cred);
 };

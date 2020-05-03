@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import * as styles from '../../../styles/main.scss';
-import { connect } from 'react-redux';
-import { uploadProfilePicture } from '../../redux/actions';
+import React, { Component } from "react";
+import * as styles from "../../../styles/main.scss";
+import { connect } from "react-redux";
+import { uploadProfilePicture } from "../../redux/actions";
 
 export class ProfilePictureUpdate extends Component<
   { user; uploadProfilePicture: Function },
@@ -10,12 +10,12 @@ export class ProfilePictureUpdate extends Component<
   state = {
     selectedFile: null,
     progress: null,
-    status: null
+    status: null,
   };
 
-  handleSelectedFile = event => {
+  handleSelectedFile = (event) => {
     this.setState({
-      selectedFile: event.target.files[0]
+      selectedFile: event.target.files[0],
     });
   };
 
@@ -26,7 +26,7 @@ export class ProfilePictureUpdate extends Component<
       this.props.user.uid,
       (progress, status) => {
         this.setState({ progress, status });
-      }
+      },
     );
   };
 
@@ -34,20 +34,20 @@ export class ProfilePictureUpdate extends Component<
     return (
       <div
         className={styles.container}
-        style={{ width: 'fit-content', margin: 'auto', paddingTop: '10%' }}
+        style={{ width: "fit-content", margin: "auto", paddingTop: "10%" }}
       >
         <div>
-          {' '}
+          {" "}
           <h3> Current Profile Picture </h3>
         </div>
-        <div style={{ marginBottom: '50px' }}>
+        <div style={{ marginBottom: "50px" }}>
           {this.state.progress ? (
             <div> uploading {Math.floor(this.state.progress)} %</div>
           ) : (
             <img
               src={
                 (this.props.user && this.props.user.photoURL) ||
-                'https://react.semantic-ui.com/images/wireframe/image.png'
+                "https://react.semantic-ui.com/images/wireframe/image.png"
               }
               // height="250px"
               width="300px"
@@ -55,19 +55,19 @@ export class ProfilePictureUpdate extends Component<
           )}
         </div>
         <small>
-          {' '}
+          {" "}
           {this.state.status
-            ? 'Uploaded Successfully'
-            : this.state.status === false && 'Upload failed'}
+            ? "Uploaded Successfully"
+            : this.state.status === false && "Upload failed"}
         </small>
-        <div className={styles['form-group']}>
-          {' '}
+        <div className={styles["form-group"]}>
+          {" "}
           <label htmlFor="profilePicTureInput">
-            Upload A New Profile Picture{' '}
+            Upload A New Profile Picture{" "}
           </label>
           <input
             id="profilePicTureInput"
-            className={styles['form-control-file']}
+            className={styles["form-control-file"]}
             type="file"
             accept="image/gif, image/jpeg, image/png"
             onChange={this.handleSelectedFile}
@@ -75,14 +75,14 @@ export class ProfilePictureUpdate extends Component<
           <button
             className={[
               styles.btn,
-              styles['btn-primary'],
-              styles['submit-button']
-            ].join(' ')}
+              styles["btn-primary"],
+              styles["submit-button"],
+            ].join(" ")}
             onClick={this.handleUpload}
             type="submit"
           >
-            {' '}
-            Submit{' '}
+            {" "}
+            Submit{" "}
           </button>
         </div>
       </div>
@@ -94,7 +94,6 @@ const mapStateToProps = ({ user }) => {
   return { user };
 };
 
-export default connect(
-  mapStateToProps,
-  { uploadProfilePicture }
-)(ProfilePictureUpdate);
+export default connect(mapStateToProps, { uploadProfilePicture })(
+  ProfilePictureUpdate,
+);
